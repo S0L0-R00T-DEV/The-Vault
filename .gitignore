@@ -1,38 +1,36 @@
-# Kotlin
-*.class
-*.jar
-*.war
-*.zip
+# Build artifacts
 *.apk
-*.ap_\n*.dex\n*.class
-*.hprof\n
-# Android
-*.iml
-.gradle/
-/local.properties
-/.idea/
-/.gradle/
-/captures/
-.externalNativeBuild/
-.build/
+*.aab
+*.ap_
+*.dex
+*.class
 
 # Gradle
 .gradle/
-/build/
-!gradle-wrapper.jar
+build/
 
-# IDE-specific
+# Local configuration
+local.properties
+keystore.properties
+
+# Keystores
+*.jks
+*.keystore
+
+# IntelliJ / Android Studio
+*.iml
 .idea/
-*.sublime-project
-*.sublime-workspace
-*.vscode/
-*.project
-*.classpath
-*.cproject
-.DS_Store
+*.ipr
+*.iws
 
-# Miscellaneous
+# External build
+.externalNativeBuild/
+.cxx/
+captures/
+
+# Logs
 *.log
-*.tmp
-*.tmp
-*.swp
+
+# OS files
+.DS_Store
+Thumbs.db

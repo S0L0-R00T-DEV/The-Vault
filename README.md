@@ -1,70 +1,77 @@
 # The Vault
 
-## Project Overview
-The Vault is a secure management system for storing, organizing, and accessing sensitive information. Designed for both individuals and teams, it prioritizes security and usability.
+The Vault is a local-first Android app for storing sensitive information. It focuses on on-device security, discreet access, and encrypted backups while keeping your data offline.
 
-## Features
-- **Data Encryption:** All stored data is encrypted using advanced algorithms.
-- **User Authentication:** Secure login system with multi-factor authentication.
-- **Role-Based Access:** Fine-grained access control for different user roles.
-- **Audit Logs:** Comprehensive logging of all access and changes.
-- **Cross-Platform Support:** Available on web, desktop, and mobile platforms.
+## Highlights
+- Multi-vault organization with folders and tags
+- Encrypted content fields (AES-GCM) with per-vault keys stored in Android Keystore
+- Biometric unlock and strict biometric mode per vault
+- Decoy vault and panic PIN support
+- Stealth app icon disguises
+- Intruder selfie capture after failed unlock attempts
+- Auto-lock, lockout protection, and inactivity timeout
+- Secure clipboard clearing for copied secrets
+- Offline encrypted backups (`.vltbck`) with recovery phrase support
 
-## Installation/Build Instructions
-1. **Clone the Repository**:
-   ```bash
-   git clone https://github.com/S0L0-R00T-DEV/The-Vault.git
-   cd The-Vault
-   ```
-2. **Install Dependencies**:
-   ```bash
-   npm install
-   ```
-3. **Build the Project**:
-   ```bash
-   npm run build
-   ```
-4. **Start the Development Server**:
-   ```bash
-   npm start
-   ```
+## Screenshots
+<p align="center">
+  <img src="docs/screenshots/01.jpg" width="22%" />
+  <img src="docs/screenshots/02.jpg" width="22%" />
+  <img src="docs/screenshots/03.jpg" width="22%" />
+  <img src="docs/screenshots/04.jpg" width="22%" />
+</p>
 
-## Security Model
-The Vault implements several security practices:
-- Data encryption at rest and in transit.
-- Regular security audits and vulnerability assessments.
-- Compliance with data protection regulations (e.g., GDPR).
+## Tech Stack
+- Kotlin + Jetpack Compose
+- Room (local database)
+- AndroidX Security Crypto
+- Koin (dependency injection)
+- WorkManager
+- CameraX (intruder capture)
+- BouncyCastle + Zstd (backup crypto and compression)
 
-## Usage Examples
-To save sensitive data:
-```javascript
-const vault = new Vault();
-vault.save("mySecret", "superSecretValue");
-```
+## Requirements
+- Android Studio (latest stable)
+- JDK 11
+- Android SDK 34
+- Device or emulator with API 26+
 
-To retrieve stored data:
-```javascript
-const secretValue = vault.retrieve("mySecret");
-console.log(secretValue);
-```
+## Build And Run
+1. Clone the repo.
+2. Open the project in Android Studio and sync Gradle.
+3. Build a debug APK.
 
-## Architecture
-The architecture of The Vault follows the MVC (Model-View-Controller) pattern:
-- **Model:** Handles data logic and database interactions.
-- **View:** User interface components.
-- **Controller:** Manages user requests and application logic.
-
-## Testing
-To run the tests, use the following command:
 ```bash
-npm test
+./gradlew assembleDebug
 ```
-Ensure all tests pass before pushing any changes.
 
-## Contributing Guidelines
-- Follow the coding standards and best practices.
-- Create a new branch for each feature or bug fix.
-- Submit a pull request with a clear description of your changes.
+4. Install on a device or emulator.
+
+```bash
+./gradlew installDebug
+```
+
+## Release Signing
+Copy `keystore.properties.example` to `keystore.properties`, fill in your values, then build:
+
+```bash
+./gradlew assembleRelease
+```
+
+## Permissions
+- Camera: intruder capture when enabled
+- Biometric: unlock and strict biometric mode
+- Notifications and foreground service: long-running backup tasks
+- Vibrate: UI feedback
+
+## Security Notes
+- The app stores data on-device and does not request network permissions.
+- Sensitive fields are encrypted before storage. Metadata like item names or descriptions may remain plaintext.
+- Files are stored in app-private storage and deleted with a best-effort secure wipe.
+- Backups are encrypted and include integrity checks. Store recovery phrases securely.
+
+## Contributing
+See `CONTRIBUTING.md`.
 
 ## License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+All rights reserved. See `LICENSE`.

@@ -387,7 +387,7 @@ fun DashboardScreen(
     }
 }
 
-private const val GITHUB_REPO_URL_PLACEHOLDER = ""
+private const val GITHUB_REPO_URL_PLACEHOLDER = "https://github.com/S0L0-R00T-DEV/The-Vault"
 
 @Composable
 private fun AboutScreen(

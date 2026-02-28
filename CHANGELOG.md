@@ -6,10 +6,11 @@ All notable changes to this project will be documented in this file.
 
 ## [1.0.0] - 2026-02-28
 ### Added
-- Initial release of the project with basic functionality.
-
-### Changed
-- Improved performance of key operations.
-
-### Fixed
-- Resolved bugs in user authentication.
+- Local vaults for notes, passwords, files, and contacts
+- Per-vault PIN protection and encrypted content fields
+- Biometric unlock and strict biometric mode
+- Stealth app icon disguises and decoy vault support
+- Panic PIN and auto-wipe protection after repeated failed attempts
+- Intruder selfie capture for failed unlock attempts
+- Offline encrypted backups (`.vltbck`) with recovery phrase support
+- Folder and tag organization with global search
