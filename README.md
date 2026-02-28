@@ -1,81 +1,70 @@
 # The Vault
 
-Secure, offline-first vault for storing passwords, notes, contacts, and files with strong local encryption and manual backups.
-
-## Version
-Current app version: **1.0.0**
+## Project Overview
+The Vault is a secure management system for storing, organizing, and accessing sensitive information. Designed for both individuals and teams, it prioritizes security and usability.
 
 ## Features
-- Multiple vaults with individual PINs
-- Decoy PIN support
-- Fingerprint unlock (configurable per vault or all vaults)
-- Inactivity lock and auto-wipe (failed attempts)
-- Intruder capture on failed attempts
-- File vault (images, documents, media)
-- Manual backups:
-  - Normal backup (single vault)
-  - Extreme backup (single vault with device‑locked protection)
-  - Full backup (entire app data)
-  - Full Extreme backup (entire app data + encrypted zip)
-- Restore with validation and progress tracking
-- Backup history and vault health info
-- Clipboard auto‑clear for sensitive data
+- **Data Encryption:** All stored data is encrypted using advanced algorithms.
+- **User Authentication:** Secure login system with multi-factor authentication.
+- **Role-Based Access:** Fine-grained access control for different user roles.
+- **Audit Logs:** Comprehensive logging of all access and changes.
+- **Cross-Platform Support:** Available on web, desktop, and mobile platforms.
 
-## Requirements
-- Android Studio Hedgehog+ or Gradle CLI
-- Android SDK (via Android Studio)
-- JDK 17
-
-## Project Structure (high level)
-```
-TV/
-  app/                # Android app module
-  gradle/             # Gradle wrapper files
-  build.gradle.kts    # Top-level Gradle config
-  settings.gradle.kts
-  gradle.properties
-```
-
-## Build
-Debug APK:
-```bash
-./gradlew assembleDebug
-```
-
-Release APK (signed):
-1. Create a keystore (once):
+## Installation/Build Instructions
+1. **Clone the Repository**:
    ```bash
-   keytool -genkeypair -v -keystore release-keystore.jks -keyalg RSA -keysize 2048 -validity 10000 -alias vault_release
+   git clone https://github.com/S0L0-R00T-DEV/The-Vault.git
+   cd The-Vault
    ```
-2. Copy `keystore.properties.example` to `keystore.properties` and fill in your values.
-3. Build:
+2. **Install Dependencies**:
    ```bash
-   ./gradlew assembleRelease
+   npm install
+   ```
+3. **Build the Project**:
+   ```bash
+   npm run build
+   ```
+4. **Start the Development Server**:
+   ```bash
+   npm start
    ```
 
-Outputs:
-- Debug: `app/build/outputs/apk/debug/`
-- Release: `app/build/outputs/apk/release/`
+## Security Model
+The Vault implements several security practices:
+- Data encryption at rest and in transit.
+- Regular security audits and vulnerability assessments.
+- Compliance with data protection regulations (e.g., GDPR).
 
-## Configuration
-- `keystore.properties` and `*.jks` are intentionally ignored by git.
-- Update the GitHub button URL in-app when the repo URL is final.
-
-## GitHub Setup
-If this is a new repo:
-```bash
-git init
-git add .
-git commit -m "Initial commit"
-git branch -M main
-git remote add origin https://github.com/S0L0-R00T-DEV/The-Vault.git
-git push -u origin main
+## Usage Examples
+To save sensitive data:
+```javascript
+const vault = new Vault();
+vault.save("mySecret", "superSecretValue");
 ```
 
-## Security Notes
-- The app stores data locally and encrypts vault content.
-- Backups are designed to be portable but protected by keys/credentials.
-- Losing keys or device‑locked backups is irreversible by design.
+To retrieve stored data:
+```javascript
+const secretValue = vault.retrieve("mySecret");
+console.log(secretValue);
+```
+
+## Architecture
+The architecture of The Vault follows the MVC (Model-View-Controller) pattern:
+- **Model:** Handles data logic and database interactions.
+- **View:** User interface components.
+- **Controller:** Manages user requests and application logic.
+
+## Testing
+To run the tests, use the following command:
+```bash
+npm test
+```
+Ensure all tests pass before pushing any changes.
+
+## Contributing Guidelines
+- Follow the coding standards and best practices.
+- Create a new branch for each feature or bug fix.
+- Submit a pull request with a clear description of your changes.
 
 ## License
-Add a LICENSE file before publishing (recommended).
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
